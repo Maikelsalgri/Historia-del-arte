@@ -1,1 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Historia del Arte Humanista</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f0f5;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(90deg, #8c1c13, #a83232);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+    nav {
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      padding: 15px 10px;
+      text-decoration: none;
+      color: #8c1c13;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #d42a2a;
+    }
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      animation: fadeInUp 1s ease;
+    }
+    section h2 {
+      color: #8c1c13;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+      margin-top: 0;
+    }
+    section img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: #8c1c13;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+ .drag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+          }
+        
+  .drag-items, .drop-areas {
+            flex: 1;
+            min-width: 300px;
+          }
+        
+  .drag-item {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #999;
+            cursor: grab;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s ease;
+          }
+          .drop-zone {
+            min-height: 100px;
+            border: 2px dashed #999;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #fafafa;
+            border-radius: 5px;
+          }
+        
+  .drop-zone.over {
+            border-color: #333;
+            background-color: #e8f4ff;
+          }
+        
+   .drop-zone .drag-item {
+            margin: 0;
+            border: none;
+            cursor: default;
+            background-color: #d0f0d0;
+          }
+        
+  .correct {
+            background-color: #a0f5a0 !important;
+            border-color: #0a0 !important;
+          }
+        
+  .shake {
+            animation: shake 0.4s;
+          }
+        
+   .flash-red {
+            background-color: #ffbdbd !important;
+            border-color: #ff0000 !important;
+          }
+        
+  @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            50% { transform: translateX(6px); }
+            75% { transform: translateX(-4px); }
+            100% { transform: translateX(0); }
+      }
+     
+   canvas {
+            border: 2px solid #333;
+            cursor: pointer;
+          }
+          
+   #mensaje {
+            font-weight: bold;
+            margin-top: 10px;
+            color: green;
+          }
+        }
+        
+  .match-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            gap: 40px;
+          }
+          .match-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 45%;
+          }
+        
+  .match-item {
+            background-color: #f0f0f0;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s;
+          }
+        
+   .match-item.selected {
+            background-color: #d9edf7;
+            border-color: #31708f;
+          }
+        
+  .match-item.matched {
+            background-color: #dff0d8;
+            border-color: #3c763d;
+            pointer-events: none;
+          }
+        
+   .match-item.error {
+            background-color: #f2dede;
+            border-color: #a94442;
+          }
+  </style>
+  
+  
+</head>
+<body>
 
+<header>
+  <h1>Historia del Arte con Enfoque Humanista</h1>
+  <p>Un recorrido visual e introspectivo por el arte de la humanidad</p>
+</header>
+
+<nav>
+  <a href="#prehistoria">Prehistoria</a>
+  <a href="#edad-media">Edad Media</a>
+  <a href="#renacimiento">Renacimiento</a>
+  <a href="#modernismo">Modernismo</a>
+  <a href="#arte-contemporaneo">Contemporáneo</a>
+</nav>
+
+<section id="prehistoria">
+  <h2>Prehistoria</h2>
+  <p>El arte en la prehistoria surge como una forma de comunicación y conexión espiritual con el entorno. Las pinturas rupestres y esculturas pequeñas reflejan rituales, cacerías y el deseo de registrar la vida cotidiana.</p>
+  <img src="https://i.imgur.com/6mdzghO.jpeg">
+</section>
+
+
+<section id="drag-drop">
+  <h2>🎨 Ordena los períodos del arte</h2>
+  <p>Arrastra el nombre del período al recuadro con su descripción. ¡Ojo! Algunas opciones no encajan en ninguna descripción.</p>
+  <div class="drag-container">
+    <div class="drag-items">
+      <div class="drag-item" draggable="true" id="prehistoria">Prehistoria</div>
+      <div class="drag-item" draggable="true" id="renacimiento">Renacimiento</div>
+      <div class="drag-item" draggable="true" id="modernismo">Modernismo</div>
+      <div class="drag-item" draggable="true" id="barroco">Barroco</div> 
+      <div class="drag-item" draggable="true" id="pop-art">Pop Art</div> 
+    </div>
+    <div class="drop-areas">
+      <div class="drop-zone" data-correct="prehistoria">
+        <p><strong>Desarrollo de arte rupestre y esculturas primitivas. Se buscaba representar la vida diaria y lo espiritual.</strong></p>
+      </div>
+      <div class="drop-zone" data-correct="renacimiento">
+        <p><strong>Regreso a los valores clásicos, enfoque en el ser humano, proporción y perspectiva.</strong></p>
+      </div>
+      <div class="drop-zone" data-correct="modernismo">
+        <p><strong>Ruptura con las tradiciones, exploración de nuevas técnicas y estilos como el cubismo.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <button onclick="verificarRespuestas()">Verificar</button>
+  <p id="dragResult" style="margin-top:10px;font-weight:bold;"></p>
+</section>
+
+<section id="edad-media">
+  <h2>Edad Media</h2>
+  <p>Durante este período, el arte sirvió como herramienta para enseñar la fe. Los vitrales góticos y las ilustraciones en manuscritos sagrados elevaban la espiritualidad por encima de lo humano. El mensaje era claro: la divinidad lo gobernaba todo.</p>
+  <img src="https://i.imgur.com/8mDLCyr.jpeg">
+</section>
+
+
+<section id="quiz">
+  <h2>🧠 Prueba tus conocimientos sobre Historia del Arte</h2>
+
+  <!-- Pregunta 1 -->
+  <div class="pregunta">
+    <p><strong>1.</strong> ¿En qué período del arte apareció el cubismo?</p>
+    <form class="quizForm" data-correct="modernismo">
+      <label><input type="radio" name="q1" value="prehistoria"> Prehistoria</label><br>
+      <label><input type="radio" name="q1" value="edad-media"> Edad Media</label><br>
+      <label><input type="radio" name="q1" value="renacimiento"> Renacimiento</label><br>
+      <label><input type="radio" name="q1" value="modernismo"> Modernismo y Vanguardia</label><br>
+      <button type="submit">Responder</button>
+      <p class="quizResult"></p>
+    </form>
+  </div>
+
+  <!-- Pregunta 2 -->
+  <div class="pregunta">
+    <p><strong>2.</strong> ¿Qué caracteriza al arte del Renacimiento?</p>
+    <form class="quizForm" data-correct="humanismo">
+      <label><input type="radio" name="q2" value="espiritualidad"> Enfoque en la espiritualidad divina</label><br>
+      <label><input type="radio" name="q2" value="decorativo"> Uso decorativo de formas sin perspectiva</label><br>
+      <label><input type="radio" name="q2" value="humanismo"> Interés por el ser humano y la proporción</label><br>
+      <label><input type="radio" name="q2" value="tecnologia"> Uso de tecnologías digitales</label><br>
+      <button type="submit">Responder</button>
+      <p class="quizResult"></p>
+    </form>
+  </div>
+
+  <!-- Pregunta 3 -->
+  <div class="pregunta">
+    <p><strong>3.</strong> ¿Qué buscaban los artistas en el arte prehistórico?</p>
+    <form class="quizForm" data-correct="ritual">
+      <label><input type="radio" name="q3" value="decorativo"> Decorar espacios interiores</label><br>
+      <label><input type="radio" name="q3" value="dinero"> Obtener dinero por sus obras</label><br>
+      <label><input type="radio" name="q3" value="ritual"> Expresarse y realizar rituales</label><br>
+      <label><input type="radio" name="q3" value="firma"> Firmar su trabajo como autores</label><br>
+      <button type="submit">Responder</button>
+      <p class="quizResult"></p>
+    </form>
+  </div>
+</section>
+
+<section id="renacimiento">
+  <h2>Renacimiento</h2>
+  <p>La figura humana se volvió protagonista. Artistas como Da Vinci o Miguel Ángel creían en el hombre como medida del universo. Este arte celebraba la razón, la anatomía y la belleza clásica.</p>
+  <img src="https://i.imgur.com/jmvcizQ.jpeg">
+</section>
+
+<section id="match-pairs">
+    <h2>🧩 Junta cada período del arte con su descripción</h2>
+    <p>Haz clic primero en un elemento de la izquierda y luego en su pareja correcta de la derecha.</p>
+  
+   <div class="match-container">
+      <!-- Columna izquierda -->
+      <div class="match-column" id="leftColumn">
+        <div class="match-item" data-match="prehistoria">🪨 Prehistoria</div>
+        <div class="match-item" data-match="renacimiento">🏛 Renacimiento</div>
+        <div class="match-item" data-match="modernismo">🎨 Modernismo</div>
+      </div>
+     <!-- Columna derecha -->
+      <div class="match-column" id="rightColumn">
+        <div class="match-item" data-match="modernismo">Uso del color, distorsión de la forma, ruptura con la tradición</div>
+        <div class="match-item" data-match="prehistoria">Arte rupestre, símbolos rituales, figuras animales</div>
+        <div class="match-item" data-match="renacimiento">Perspectiva, proporción humana, influencia grecorromana</div>
+      </div>
+    </div> <!-- ← Este div estaba faltando -->
+  </section>
+
+  <p id="matchResult" style="margin-top:15px;font-weight:bold;"></p>
+</section>
+
+<section id="modernismo">
+  <h2>Modernismo y Vanguardia</h2>
+  <p>Los artistas empezaron a romper las reglas, explorando emociones, sueños y la mente humana. El impresionismo buscaba captar la luz, el cubismo deconstruía la forma, y el surrealismo navegaba entre el sueño y lo inconsciente.</p>
+  <img src="https://i.imgur.com/cvdB6Tq.jpeg">
+</section>
+
+<section id="arte-contemporaneo">
+  <h2>Arte Contemporáneo</h2>
+  <p>Hoy el arte es diálogo, crítica y exploración personal. Desde el arte digital hasta el arte callejero, se busca conectar con la realidad social, política y emocional de cada individuo. El arte es, más que nunca, humano.</p>
+  <img src="https://i.imgur.com/Z7mNd59.jpeg" alt="Arte urbano contemporáneo">
+</section>
+
+<section id="puzzle">
+    <h2>🧩 Arma el rompecabezas: reinvención del barroco</h2>
+    <p>Haz clic sobre una pieza y luego en otra para intercambiarlas.</p>
+  
+   <canvas id="puzzleCanvas" width="300" height="300" style="border: 2px solid #444;"></canvas>
+    
+   <div style="margin-top: 15px;">
+      <button onclick="mezclar()">🔄 Mezclar piezas</button>
+      <button onclick="resolver()">✅ Ver solución</button>
+    </div>
+  
+  <p id="mensaje"></p>
+  
+  <div id="art-info" style="display:none; margin-top: 15px;">
+      <h3>🎨 Obra base: Barroco (siglo XVII)</h3>
+      <p><strong>Estilo:</strong> contemporáneo</p>
+      <p><strong>Detalles:</strong> Esta obra es una reinterpretación moderna y pop del famoso cuadro "La joven con el pendiente de perla" de Johannes Vermeer (pintado alrededor de 1665).</p>
+    </div>
+  </section>
+
+<footer>
+  <p>© 2025 - Historia del Arte | Diseñado por Maria Jose Muñoz Gordillo</p>
+</footer>
+
+<script>
+  let firstSelected = null;
+
+  const items = document.querySelectorAll("#match-pairs .match-item");
+
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      // Si ya está seleccionado, no hace nada
+      if (item.classList.contains("matched")) return;
+
+      // Si es el primer clic
+      if (!firstSelected) {
+        firstSelected = item;
+        item.classList.add("selected");
+      } else {
+        // Segundo clic
+        if (
+          firstSelected.dataset.match === item.dataset.match &&
+          firstSelected !== item
+        ) {
+          firstSelected.classList.add("matched");
+          item.classList.add("matched");
+        } else {
+          firstSelected.classList.add("error");
+          item.classList.add("error");
+
+          setTimeout(() => {
+            firstSelected.classList.remove("error", "selected");
+            item.classList.remove("error");
+          }, 800);
+        }
+
+        firstSelected.classList.remove("selected");
+        firstSelected = null;
+      }
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    let current = "";
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      if (pageYOffset >= sectionTop - 70) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      if (link.getAttribute("href") === "#" + current) {
+        link.style.color = "#d42a2a";
+      } else {
+        link.style.color = "#8c1c13";
+      }
+    });
+  });
+</script>
+
+
+<script>
+  // Manejo para múltiples formularios de quiz
+  const forms = document.querySelectorAll('.quizForm');
+
+  forms.forEach((form, index) => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const correct = form.dataset.correct;
+      const selected = form.querySelector('input[type="radio"]:checked');
+      const result = form.querySelector('.quizResult');
+
+      if (!selected) {
+        result.textContent = "Selecciona una respuesta.";
+        result.style.color = "orange";
+      } else if (selected.value === correct) {
+        result.textContent = "¡Correcto!";
+        result.style.color = "green";
+      } else {
+        result.textContent = "Incorrecto. Inténtalo de nuevo.";
+        result.style.color = "red";
+      }
+    });
+  });
+</script>
+
+<script>
+  const items = document.querySelectorAll('.drag-item');
+  const zones = document.querySelectorAll('.drop-zone');
+  let draggedItem = null;
+
+  items.forEach(item => {
+    item.addEventListener('dragstart', () => {
+      draggedItem = item;
+    });
+  });
+
+  zones.forEach(zone => {
+    zone.addEventListener('dragover', e => {
+      e.preventDefault();
+      zone.classList.add('over');
+    });
+
+    zone.addEventListener('dragleave', () => {
+      zone.classList.remove('over');
+    });
+
+    zone.addEventListener('drop', () => {
+      zone.classList.remove('over');
+      if (draggedItem) {
+        // Elimina otro si ya hay uno
+        const existing = zone.querySelector('.drag-item');
+        if (existing) zone.removeChild(existing);
+        zone.appendChild(draggedItem);
+        draggedItem = null;
+      }
+    });
+  });
+
+  function verificarRespuestas() {
+    let correctas = 0;
+    let errores = 0;
+
+    zones.forEach(zone => {
+      const respuesta = zone.querySelector('.drag-item');
+      if (respuesta) {
+        if (respuesta.id === zone.dataset.correct) {
+          correctas++;
+        } else {
+          errores++;
+        }
+      }
+    });
+
+    const mensaje = document.getElementById('dragResult');
+    if (correctas === zones.length && errores === 0) {
+      mensaje.textContent = "¡Perfecto! Todas las respuestas son correctas.";
+      mensaje.style.color = "green";
+    } else {
+    mensaje.textContent = `Tienes  correctas y  incorrectas. Hay opciones que no deben usarse.`;
+      mensaje.style.color = "orange";
+    }
+  }
+</script>
+
+<script>
+  let selectedLeft = null;
+  let selectedRight = null;
+  let matches = 0;
+
+  const leftItems = document.querySelectorAll('#leftColumn .match-item');
+  const rightItems = document.querySelectorAll('#rightColumn .match-item');
+  const resultText = document.getElementById('matchResult');
+
+  function resetSelection() {
+    leftItems.forEach(item => item.classList.remove('selected'));
+    rightItems.forEach(item => item.classList.remove('selected'));
+    selectedLeft = null;
+    selectedRight = null;
+  }
+
+  leftItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (item.classList.contains('matched')) return;
+      resetSelection();
+      selectedLeft = item;
+      item.classList.add('selected');
+    });
+  });
+
+  rightItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (item.classList.contains('matched')) return;
+      if (!selectedLeft) return;
+
+      selectedRight = item;
+      item.classList.add('selected');
+
+      // Verifica si hacen match
+      if (selectedLeft.dataset.match === selectedRight.dataset.match) {
+        selectedLeft.classList.add('matched');
+        selectedRight.classList.add('matched');
+        matches++;
+        if (matches === leftItems.length) {
+          resultText.textContent = "¡Excelente! Emparejaste todos correctamente.";
+          resultText.style.color = "green";
+        } else {
+          resultText.textContent = "¡Muy bien! Sigue emparejando.";
+          resultText.style.color = "black";
+        }
+      } else {
+        resultText.textContent = "No es correcto. Inténtalo otra vez.";
+        resultText.style.color = "red";
+      }
+
+      // Reinicia selección
+      setTimeout(resetSelection, 800);
+    });
+  });
+</script>
+
+<script>
+  const items = document.querySelectorAll('.drag-item');
+  const zones = document.querySelectorAll('.drop-zone');
+  const itemList = document.getElementById('item-list');
+  let draggedItem = null;
+
+  items.forEach(item => {
+    item.addEventListener('dragstart', () => {
+      draggedItem = item;
+    });
+  });
+
+  zones.forEach(zone => {
+    zone.addEventListener('dragover', e => {
+      e.preventDefault();
+      zone.classList.add('over');
+    });
+
+    zone.addEventListener('dragleave', () => {
+      zone.classList.remove('over');
+    });
+
+    zone.addEventListener('drop', () => {
+      zone.classList.remove('over');
+      if (!draggedItem) return;
+
+      const correctId = zone.dataset.correct;
+      const existing = zone.querySelector('.drag-item');
+      if (existing) zone.removeChild(existing);
+
+      // Verifica si es la respuesta correcta
+      if (draggedItem.id === correctId) {
+        zone.appendChild(draggedItem);
+        draggedItem.classList.add('correct');
+      } else {
+        // Efectos de error
+        draggedItem.classList.add('shake', 'flash-red');
+        setTimeout(() => {
+          draggedItem.classList.remove('shake', 'flash-red');
+          itemList.appendChild(draggedItem); // vuelve al origen
+        }, 600);
+      }
+
+      draggedItem = null;
+    });
+  });
+
+  function verificarRespuestas() {
+    let correctas = 0;
+    zones.forEach(zone => {
+      const respuesta = zone.querySelector('.drag-item');
+      if (respuesta && respuesta.id === zone.dataset.correct) {
+        correctas++;
+      }
+    });
+
+    const mensaje = document.getElementById('dragResult');
+    if (correctas === zones.length) {
+      mensaje.textContent = "¡Perfecto! Todas las respuestas son correctas.";
+      mensaje.style.color = "green";
+    } else {
+      mensaje.textContent = `Tienes  correctas de . Sigue intentando.`;
+      mensaje.style.color = "orange";
+    }
+  }
+</script>
+<script>
+  const canvas = document.getElementById('puzzleCanvas');
+  const ctx = canvas.getContext('2d');
+  const img = new Image();
+  img.src = 'https://i.imgur.com/0gcF6jF.jpeg';
+
+  const filas = 3;
+  const columnas = 3;
+  const ancho = canvas.width / columnas;
+  const alto = canvas.height / filas;
+
+  let piezas = [];
+  let seleccionada = null;
+  let original = [];
+
+  img.onload = () => {
+    inicializarPiezas();
+    original = [...piezas];
+    mezclar();
+    dibujar();
+  };
+
+  function inicializarPiezas() {
+    piezas = [];
+    for (let y = 0; y < filas; y++) {
+      for (let x = 0; x < columnas; x++) {
+        piezas.push({ sx: x * ancho, sy: y * alto });
+      }
+    }
+  }
+
+  function mezclar() {
+    piezas.sort(() => Math.random() - 0.5);
+    seleccionada = null;
+    document.getElementById('mensaje').textContent = '';
+    document.getElementById('art-info').style.display = 'none';
+    dibujar();
+  }
+
+  function dibujar() {
+    for (let i = 0; i < piezas.length; i++) {
+      const x = (i % columnas) * ancho;
+      const y = Math.floor(i / columnas) * alto;
+      const pieza = piezas[i];
+      ctx.drawImage(img, pieza.sx, pieza.sy, ancho, alto, x, y, ancho, alto);
+    }
+  }
+
+  canvas.addEventListener('click', e => {
+    const x = Math.floor(e.offsetX / ancho);
+    const y = Math.floor(e.offsetY / alto);
+    const idx = y * columnas + x;
+
+    if (seleccionada === null) {
+      seleccionada = idx;
+    } else {
+      [piezas[seleccionada], piezas[idx]] = [piezas[idx], piezas[seleccionada]];
+      seleccionada = null;
+      dibujar();
+      verificarVictoria();
+    }
+  });
+
+  function verificarVictoria() {
+    let correcto = true;
+    for (let i = 0; i < piezas.length; i++) {
+      const pieza = piezas[i];
+      const sxEsperado = (i % columnas) * ancho;
+      const syEsperado = Math.floor(i / columnas) * alto;
+      if (pieza.sx !== sxEsperado || pieza.sy !== syEsperado) {
+        correcto = false;
+        break;
+      }
+    }
+
+    if (correcto) {
+      document.getElementById('mensaje').textContent = '🎉 ¡Felicidades! Has armado el rompecabezas correctamente.';
+      document.getElementById('art-info').style.display = 'block';
+    }
+  }
+
+  function resolver() {
+    inicializarPiezas();
+    dibujar();
+    document.getElementById('mensaje').textContent = '🧩 El rompecabezas ha sido resuelto.';
+    document.getElementById('art-info').style.display = 'block';
+  }
+</script>
+</body>
+</html>
