@@ -321,9 +321,6 @@
     </div> <!-- ← Este div estaba faltando -->
   </section>
 
-  <p id="matchResult" style="margin-top:15px;font-weight:bold;"></p>
-</section>
-
 <section id="modernismo">
   <h2>Modernismo y Vanguardia</h2>
   <p>Los artistas empezaron a romper las reglas, explorando emociones, sueños y la mente humana. El impresionismo buscaba captar la luz, el cubismo deconstruía la forma, y el surrealismo navegaba entre el sueño y lo inconsciente.</p>
